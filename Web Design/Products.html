@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products</title>
+<link rel="stylesheet" href="index.css">
+<link rel="shortcut icon" href="Pictures/Hotwheels.png" type="image/x-icon" />
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header {
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 10px 0;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .navbar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    .navbar li {
+        margin-right: 20px;
+    }
+
+    .navbar li:last-child {
+        margin-right: 0;
+    }
+
+    .navbar a {
+        text-decoration: none;
+        color: #ffffff;
+        padding: 8px 16px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+    .navbar a:hover {
+        background-color: #ddd;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+    .small-container {
+        max-width: 1080px;
+        margin: auto;
+    }
+
+    .title {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .col-4 {
+        flex-basis: 25%;
+        padding: 10px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .col-4 img {
+        max-width: 100%;
+    }
+
+    .col-4 h4 {
+        margin: 10px 0;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        color: #fff;
+        background-color: #333;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #555;
+    }
+
+    .cart {
+        margin: 20px 0;
+    }
+
+    .cart-items {
+        margin-bottom: 20px;
+    }
+
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .cart-total {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #fff;
+        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer p {
+        margin: 0;
+        font-size: 14px;
+        color: #777;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 300px;
+        border-radius: 5px;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        border-radius: 4px;
+    }
+
+    button {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        margin: 10px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    button:hover {
+        background-color: #555;
+    }
+
+    .receipt {
+        display: none;
+        margin-top: 20px;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+    .receipt h2 {
+        margin-top: 0;
+    }
+</style>
+</head>
+<body>
+    <div class="header">   
+        <div class="navbar">
+            <div class="logo">
+                <img src="Pictures/Logo.png" alt="Logo">
+            </div>
+            <ul>
+                <li><a href="index.html" class="btn">Home</a></li>
+                <li><a href="About us.html" class="btn">About us</a></li>
+                <li><a href="Products.html" class="btn">Products</a></li>
+                <li><a href="javascript:void(0)" class="btn" id="loginBtn">Log in</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="title">Products</h2>
+        <div class="row">
+            <div class="col-4">
+                <img src="Pictures/34.png">
+                <h4>RLC Exclusive Nissan Skyline GT-R34</h4>
+                <p>₱5,300.00</p>
+                <button class="btn" onclick="addToCart('RLC Exclusive Nissan Skyline GT-R34', 5300)">Add to Cart</button>
+            </div> 
+            <div class="col-4">
+                <img src="Pictures/Hako.png">
+                <h4>RLC Exclusive 1972 Skyline H/T 2000</h4>
+                <p>₱3,500.00</p>
+                <button class="btn" onclick="addToCart('RLC Exclusive 1972 Skyline H/T 2000', 3500)">Add to Cart</button>
+            </div> 
+            <div class="col-4">
+                <img src="Pictures/Magnus.png">
+                <h4>RLC Exclusive Magnus Walker “Urban Outlaw” Porsche 964</h4>
+                <p>₱3,500.00</p>
+                <button class="btn" onclick="addToCart('RLC Exclusive Magnus Walker “Urban Outlaw” Porsche 964', 3500)">Add to Cart</button>
+            </div> 
+            <div class="col-4">
+                <img src="Pictures/Porsche red.png">
+                <h4>RLC Exclusive: ’86 Porsche 959 Spectraflame Red</h4>
+                <p>₱3,500.00</p>
+                <button class="btn" onclick="addToCart('RLC Exclusive: ’86 Porsche 959 Spectraflame Red', 3500)">Add to Cart</button>
+            </div> 
+            <div class="col-4">
+                <img src="Pictures/Datsun.png">
+                <h4>RLC Datsun 510 Bre</h4>
+                <p>₱3,500.00</p>
+                <button class="btn" onclick="addToCart('RLC Datsun 510 Bre', 3500)">Add to Cart</button>
+            </div> 
+            <div class="col-4">
+                <img src="Pictures/Wagon.png">
+                <h4>RLC Exclusive Holiday 1952 Dodge Power-Wagon</h4>
+                <p>₱3,200.00</p>
+                <button class="btn" onclick="addToCart('RLC Exclusive Holiday 1952 Dodge Power-Wagon', 3200)">Add to Cart</button>
+            </div> 
+            <div class="col-4">
+                <img src="Pictures/F100.png">
+                <h4>Hot Wheels RLC Pink Spectra Flame Ford F100</h4>
+                <p>₱3,100.00</p>
+                <button class="btn" onclick="addToCart('Hot Wheels RLC Pink Spectra Flame Ford F100', 3100)">Add to Cart</button>
+            </div> 
+            <div class="col-4">
+                <img src="Pictures/Custom datsun.png">
+                <h4>Hot Wheels Collectors RLC Exclusive Custom ’72 Datsun 240Z</h4>
+                <p>₱3,100.00</p>
+                <button class="btn" onclick="addToCart('Hot Wheels Collectors RLC Exclusive Custom ’72 Datsun 240Z', 3100)">Add to Cart</button>
+            </div> 
+            <div class="col-4">
+                <img src="Pictures/Chevy.png">
+                <h4>RLC Exclusive 1990 Chevy 454 SS</h4>
+                <p>₱3,000.00</p>
+                <button class="btn" onclick="addToCart('RLC Exclusive 1990 Chevy 454 SS', 3000)">Add to Cart</button>
+            </div> 
+            <div class="col-4">
+                <img src="Pictures/M3.png">
+                <h4>RLC 91 BMW M3</h4>
+                <p>₱3,200.00</p>
+                <button class="btn" onclick="addToCart('RLC 91 BMW M3', 3200)">Add to Cart</button>
+            </div> 
+            <div class="col-4">
+                <img src="Pictures/Oxblood.png">
+                <h4>Hot Wheels® RLC 1955 Mercedes-Benz 300 SL</h4>
+                <p>₱3,500.00</p>
+                <button class="btn" onclick="addToCart('Hot Wheels® RLC 1955 Mercedes-Benz 300 SL ', 3500)">Add to Cart</button>
+            </div> 
+            <div class="col-4">
+                <img src="Pictures/Optimus.png">
+                <h4>Hot Wheels Transformers Optimus Prime 1:64</h4>
+                <p>₱5,800.00</p>
+                <button class="btn" onclick="addToCart('Hot Wheels Transformers Optimus Prime 1:64', 5800)">Add to Cart</button>
+            </div> 
+        </div>
+        <div class="cart">
+            <h2>Shopping Cart</h2>
+            <div class="cart-items"></div>
+            <div class="cart-total"></div>
+            <button class="btn" onclick="checkout()">Checkout</button>
+        </div>
+        <div class="receipt">
+            <h2>Receipt</h2>
+            <div class="receipt-items"></div>
+            <div class="receipt-total"></div>
+            <p> Thank you for purchasing Hot Wheels! We hope you enjoy your new additions to your collection. If you have any questions or need further assistance, feel free to reach out to us. Happy collecting!</p>
+            <button class="btn" onclick="closeReceipt()">Close</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Copyright 2023 - Hot Wheels Hub</p>
+    </div>
+
+    <!-- The Modal for Login/Register -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Log In</h2>
+            <div id="loginForm">
+                <label for="username">Username</label>
+                <input type="text" id="loginUsername" name="username" required>
+                <label for="password">Password</label>
+                <input type="password" id="loginPassword" name="password" required>
+                <button onclick="login()">Log In</button>
+                <p>Don't have an account? <a href="javascript:void(0)" onclick="showRegister()">Register</a></p>
+            </div>
+            <div id="registerForm" style="display:none;">
+                <label for="regUsername">Username</label>
+                <input type="text" id="regUsername" name="username" required>
+                <label for="regPassword">Password</label>
+                <input type="password" id="regPassword" name="password" required>
+                <button onclick="register()">Register</button>
+                <p>Already have an account? <a href="javascript:void(0)" onclick="showLogin()">Log In</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        let isLoggedIn = false;
+
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            if (isLoggedIn) {
+                isLoggedIn = false;
+                this.textContent = 'Log in';
+                alert('You have logged out.');
+            } else {
+                document.getElementById('loginModal').style.display = 'block';
+            }
+        });
+
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('loginModal').style.display = 'none';
+        });
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('loginModal')) {
+                document.getElementById('loginModal').style.display = 'none';
+            }
+        }
+
+        function showLogin() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('modalTitle').textContent = 'Log In';
+        }
+
+        function showRegister() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'block';
+            document.getElementById('modalTitle').textContent = 'Register';
+        }
+
+        function register() {
+            const username = document.getElementById('regUsername').value;
+            const password = document.getElementById('regPassword').value;
+
+            if (localStorage.getItem(username)) {
+                alert('Username already exists. Please choose a different username.');
+                return;
+            }
+
+            localStorage.setItem(username, password);
+            alert('Registration successful. You can now log in.');
+            showLogin();
+        }
+
+        function login() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (localStorage.getItem(username) === password) {
+                isLoggedIn = true;
+                document.getElementById('loginBtn').textContent = 'Log out';
+                document.getElementById('loginModal').style.display = 'none';
+                alert('Login successful.');
+            } else {
+                alert('Invalid username or password.');
+            }
+        }
+
+        let cart = [];
+
+        function addToCart(name, price) {
+            if (!isLoggedIn) {
+                alert('Please log in first.');
+                return;
+            }
+
+            const itemIndex = cart.findIndex(item => item.name === name);
+            if (itemIndex !== -1) {
+                cart[itemIndex].quantity++;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateCart();
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCart();
+        }
+
+        function changeQuantity(name, quantity) {
+            const itemIndex = cart.findIndex(item => item.name === name);
+            if (itemIndex !== -1) {
+                cart[itemIndex].quantity += quantity;
+                if (cart[itemIndex].quantity <= 0) {
+                    removeFromCart(name);
+                }
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            const cartItems = document.querySelector('.cart-items');
+            const cartTotal = document.querySelector('.cart-total');
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <p>${item.name} - ₱${item.price} x ${item.quantity}</p>
+                    <div>
+                        <button onclick="changeQuantity('${item.name}', 1)">+</button>
+                        <button onclick="changeQuantity('${item.name}', -1)">-</button>
+                        <button onclick="removeFromCart('${item.name}')">Remove</button>
+                    </div>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+
+            cartTotal.textContent = `Total: ₱${total}`;
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty.');
+                return;
+            }
+
+            const receiptItems = document.querySelector('.receipt-items');
+            const receiptTotal = document.querySelector('.receipt-total');
+            receiptItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                const receiptItem = document.createElement('div');
+                receiptItem.classList.add('receipt-item');
+                receiptItem.innerHTML = `
+                    <p>${item.name} - ₱${item.price} x ${item.quantity}</p>
+        
+                `;
+                receiptItems.appendChild(receiptItem);
+            });
+
+            receiptTotal.textContent = `Total: ₱${total}`;
+            document.querySelector('.receipt').style.display = 'block';
+        }
+
+        function closeReceipt() {
+            document.querySelector('.receipt').style.display = 'none';
+            cart = [];
+            updateCart();
+        }
+    </script>
+</body>
+</html>

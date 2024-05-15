@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuya Wheels | Hotwheels Shop</title>
+    <link rel="shortcut icon" href="Pictures/Hotwheels.png" type="image/x-icon" />
+    <link rel="stylesheet" href="index.css">
+</head>   
+<body>
+    <div class="header">   
+        <div class="container">
+            <div class="navbar">
+            <div class="logo">
+            <img src="Pictures/Logo.png" width="125px">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="btn">Home</a></li>
+                    <li><a href="About us.html" class="btn">About us </a></li>
+                    <li><a href="Products.html" class="btn"> Products </a></li>
+                </ul>
+            </nav>
+            </div>
+             <div class="row">
+                <div class="col-2">
+                    <h1>Exclusive deals just for you! </h1>
+                    <p>Giving some good deals for some new Hot wheels collection!</p>
+                    <a href="Products.html" class="btn"> Shop Now</a>
+                </div> 
+                <div class="col-2">
+                    <img src="Pictures/R34 Violet.png">
+                </div>
+            </div>
+            </div>
+            </div>
+            
+<!-----------------------FEATURED PRODUCT---------------------------------->
+<div class="small-container">
+    <h2 class="title"> Featured Products</h2>
+<div class="row">
+<div class="col-4">
+    <img src="Pictures/34.png" >
+    <h4>RLC Exclusive Nissan Skyline GT-R34</h4>
+    <p>₱5,300.00</p>
+   
+   </div> 
+   <div class="col-4">
+    <img src="Pictures/Hako.png" >
+    <h4>RLC Exclusive 1972 Skyline H/T 2000</h4>
+    <p>₱3,500.00</p>
+   
+   </div> 
+   <div class="col-4">
+    <img src="Pictures/Magnus.png" >
+    <h4>RLC Exclusive Magnus Walker “Urban Outlaw” Porsche 964</h4>
+    <p>₱3,500.00 </p>
+   
+   </div> 
+   <div class="col-4">
+    <img src="Pictures/Porsche red.png" >
+    <h4>RLC Exclusive: ’86 Porsche 959 Spectraflame Red</h4>
+    <p>₱3,500.00</p>
+
+   </div> 
+  </div>
+  <!-----------------------FOOTER---------------------------------->
+    <div class="footer-col-2">
+    <img src="Pictures/Logo haba.png">
+    <hr>
+    <p class="Copyright"> Copyright 2023- Kuya Wheels</p>
+</div>
+<!-- End Footer -->
+<script>
+        
+    let isLoggedIn = false;
+
+    document.getElementById('loginBtn').addEventListener('click', function() {
+        if (isLoggedIn) {
+            isLoggedIn = false;
+            this.textContent = 'Log in';
+            alert('You have logged out.');
+        } else {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+    });
+
+    document.querySelector('.close').addEventListener('click', function() {
+        document.getElementById('loginModal').style.display = 'none';
+    });
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('loginModal')) {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+    }
+
+    function showLogin() {
+        document.getElementById('loginForm').style.display = 'block';
+        document.getElementById('registerForm').style.display = 'none';
+        document.getElementById('modalTitle').textContent = 'Log In';
+    }
+
+    function showRegister() {
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('registerForm').style.display = 'block';
+        document.getElementById('modalTitle').textContent = 'Register';
+    }
+
+    function register() {
+        const username = document.getElementById('regUsername').value;
+        const password = document.getElementById('regPassword').value;
+
+        if (localStorage.getItem(username)) {
+            alert('Username already exists. Please choose a different username.');
+            return;
+        }
+
+        localStorage.setItem(username, password);
+        alert('Registration successful. You can now log in.');
+        showLogin();
+    }
+
+    function login() {
+        const username = document.getElementById('loginUsername').value;
+        const password = document.getElementById('loginPassword').value;
+
+        if (localStorage.getItem(username) === password) {
+            isLoggedIn = true;
+            document.getElementById('loginBtn').textContent = 'Log out';
+            document.getElementById('loginModal').style.display = 'none';
+            alert('Login successful.');
+        } else {
+            alert('Invalid username or password.');
+        }
+    }
+</script>
+</body> 
+</html>

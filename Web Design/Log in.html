@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link rel="stylesheet" href="index.css">
+<link rel="shortcut icon" href="Pictures/Hotwheels.png" type="image/x-icon" />
+</head>
+<body>
+    <div class="header">   
+        <div class="container">
+            <div class="bar">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="btn"> Home</a></li>
+                    <li><a href="About us.html" class="btn"> About us </a></li>
+                    <li><a href="Products.html" class="btn"> Products </a></li>
+                    <li><a href="Log in.html" class="btn"> Log in</a></li>
+                </ul>
+            </nav>
+            </div>
+   <!-- The Modal for Login/Register -->
+   <div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTitle">Log In</h2>
+        <div id="loginForm">
+            <label for="username">Username</label>
+            <input type="text" id="loginUsername" name="username" required>
+            <label for="password">Password</label>
+            <input type="password" id="loginPassword" name="password" required>
+            <button onclick="login()">Log In</button>
+            <p>Don't have an account? <a href="javascript:void(0)" onclick="showRegister()">Register</a></p>
+        </div>
+        <div id="registerForm" style="display:none;">
+            <label for="regUsername">Username</label>
+            <input type="text" id="regUsername" name="username" required>
+            <label for="regPassword">Password</label>
+            <input type="password" id="regPassword" name="password" required>
+            <button onclick="register()">Register</button>
+            <p>Already have an account? <a href="javascript:void(0)" onclick="showLogin()">Log In</a></p>
+        </div>
+    </div>
+</div>
+<script>
+        
+    let isLoggedIn = false;
+
+    document.getElementById('loginBtn').addEventListener('click', function() {
+        if (isLoggedIn) {
+            isLoggedIn = false;
+            this.textContent = 'Log in';
+            alert('You have logged out.');
+        } else {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+    });
+
+    document.querySelector('.close').addEventListener('click', function() {
+        document.getElementById('loginModal').style.display = 'none';
+    });
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('loginModal')) {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+    }
+
+    function showLogin() {
+        document.getElementById('loginForm').style.display = 'block';
+        document.getElementById('registerForm').style.display = 'none';
+        document.getElementById('modalTitle').textContent = 'Log In';
+    }
+
+    function showRegister() {
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('registerForm').style.display = 'block';
+        document.getElementById('modalTitle').textContent = 'Register';
+    }
+
+    function register() {
+        const username = document.getElementById('regUsername').value;
+        const password = document.getElementById('regPassword').value;
+
+        if (localStorage.getItem(username)) {
+            alert('Username already exists. Please choose a different username.');
+            return;
+        }
+
+        localStorage.setItem(username, password);
+        alert('Registration successful. You can now log in.');
+        showLogin();
+    }
+
+    function login() {
+        const username = document.getElementById('loginUsername').value;
+        const password = document.getElementById('loginPassword').value;
+
+        if (localStorage.getItem(username) === password) {
+            isLoggedIn = true;
+            document.getElementById('loginBtn').textContent = 'Log out';
+            document.getElementById('loginModal').style.display = 'none';
+            alert('Login successful.');
+        } else {
+            alert('Invalid username or password.');
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">    
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <link rel="shortcut icon" href="Pictures/Hotwheels.png" type="image/x-icon" />
+    <link rel="stylesheet" href="index.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #563343;
+        }
+
+        .profile-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .header {
+            background-color: #563343;
+            box-shadow: 0 2px 4px rgba(10, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar li {
+            margin-right: 20px;
+        }
+
+        .navbar li:last-child {
+            margin-right: 0;
+        }
+
+        .navbar a {
+            text-decoration: none;
+        color: #ffffff;
+        padding: 8px 16px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #555;
+        }
+
+        .logo img {
+            width: 200px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="navbar">
+            <div class="logo">
+                <img src="Pictures/Logo.png" alt="Logo">
+            </div>
+            <ul>
+                <li><a href="index.html" class="btn">Home</a></li>
+                <li><a href="About us.html" class="btn">About us</a></li>
+                <li><a href="Products.html" class="btn">Products</a></li>
+                <li><a href="Log in.html" class="btn">Log in</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <img class="profile-image" src="Pictures/Logo haba.png" alt="Profile Image">
+        <p>Welcome to Kuya Wheels, your ultimate destination for everything Hot Wheels! We are passionate about these iconic miniature cars and dedicated to bringing the thrill of the track to enthusiasts of all ages. Our mission is to create a community where fans can connect, share, and celebrate their love for Hot Wheels. </p>
+        <img src="Pictures/Logo.png" width="200px" alt="Fresh Kicks Logo"><br>
+        <p>Founded in November 2023, Hot Wheels Hub was born out of a deep appreciation for the legacy of Hot Wheels and a desire to make it accessible to everyone. Our website is a testament to the evolution of our brand, combining a rich history with a modern, dynamic digital presence. We strive to keep the spirit of Hot Wheels alive by offering a wide range of products, from the latest releases to vintage collectibles. </p>
+    </div>
+
+    <div class="footer">
+        <p><b>Copyright 2023- Kuya Wheels</b></p>
+    </div>
+    <script>
+        
+        let isLoggedIn = false;
+    
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            if (isLoggedIn) {
+                isLoggedIn = false;
+                this.textContent = 'Log in';
+                alert('You have logged out.');
+            } else {
+                document.getElementById('loginModal').style.display = 'block';
+            }
+        });
+    
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('loginModal').style.display = 'none';
+        });
+    
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('loginModal')) {
+                document.getElementById('loginModal').style.display = 'none';
+            }
+        }
+    
+        function showLogin() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('modalTitle').textContent = 'Log In';
+        }
+    
+        function showRegister() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'block';
+            document.getElementById('modalTitle').textContent = 'Register';
+        }
+    
+        function register() {
+            const username = document.getElementById('regUsername').value;
+            const password = document.getElementById('regPassword').value;
+    
+            if (localStorage.getItem(username)) {
+                alert('Username already exists. Please choose a different username.');
+                return;
+            }
+    
+            localStorage.setItem(username, password);
+            alert('Registration successful. You can now log in.');
+            showLogin();
+        }
+    
+        function login() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+    
+            if (localStorage.getItem(username) === password) {
+                isLoggedIn = true;
+                document.getElementById('loginBtn').textContent = 'Log out';
+                document.getElementById('loginModal').style.display = 'none';
+                alert('Login successful.');
+            } else {
+                alert('Invalid username or password.');
+            }
+        }
+    </script>
+</body>
+</html>
